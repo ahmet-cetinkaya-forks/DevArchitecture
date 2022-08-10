@@ -10,8 +10,8 @@ import {StorageModule} from './storage/storage.module';
   imports: [
     CommonModule,
     CoreRoutingModule,
-    AuthModule,
     SharedModule,
+    AuthModule,
     StorageModule,
   ],
   exports: [],
