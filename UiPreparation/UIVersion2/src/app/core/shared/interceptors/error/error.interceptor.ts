@@ -44,9 +44,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    if (request.url.toLowerCase().includes('/auth/login'))
+      return next.handle(request);
+
     if (!ErrorInterceptor.authError$.getValue()) {
       ErrorInterceptor.authError$.next(true);
-
       return this.authService.refreshAuth().pipe(
         switchMap(() => {
           ErrorInterceptor.authError$.next(false);
