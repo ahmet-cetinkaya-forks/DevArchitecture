@@ -3,11 +3,12 @@ import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthToken} from '@core/auth/models/authToken';
 import {AuthService} from '@core/auth/services/auth/authService';
+import {ToastService} from '@core/shared/services/toast/toastService';
 
 import {LoginPageComponent} from '../login-page.component';
 
 @Component({
-  selector: 'app-login-page-primeng',
+  selector: 'd-login-page-primeng',
   templateUrl: './login-page-primeng.component.html',
   styleUrls: ['./login-page-primeng.component.scss'],
 })
@@ -18,9 +19,10 @@ export class LoginPagePrimengComponent
   constructor(
     protected override formBuilder: FormBuilder,
     protected override authService: AuthService<AuthToken>,
-    protected override router: Router
+    protected override router: Router,
+    protected override toastService: ToastService
   ) {
-    super(formBuilder, authService, router);
+    super(formBuilder, authService, router, toastService);
   }
 
   ngOnInit(): void {}

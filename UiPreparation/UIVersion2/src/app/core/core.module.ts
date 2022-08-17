@@ -14,6 +14,6 @@ import {StorageModule} from './storage/storage.module';
     AuthModule,
     StorageModule,
   ],
-  exports: [],
+  exports: [SharedModule],
 })
 export class CoreModule {}
