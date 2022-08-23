@@ -3,6 +3,7 @@ import {AuthService} from '@core/features/auth/services/auth/authService';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component} from '@angular/core';
 import {ToastService} from '@core/shared/services/toast/toastService';
+import {TranslationService} from '@core/features/translation/services/translation/translationService';
 
 @Component({
   template: '<d-login-page-primeng></d-login-page-primeng>',
@@ -14,7 +15,8 @@ export class LoginPageComponent {
     protected formBuilder: FormBuilder,
     protected authService: AuthService<unknown>,
     protected router: Router,
-    protected toastService: ToastService
+    protected toastService: ToastService,
+    protected translationService: TranslationService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +31,9 @@ export class LoginPageComponent {
         this.router.navigate(['/dashboard']);
       },
       error: err => {
-        this.toastService.showToast('error', 'Error', err.error); //todo(ahmet-cetinkaya): refactor translate
+        this.translationService.get(err.error).subscribe(message => {
+          this.toastService.showToast('error', 'Error', message);
+        });
       },
     });
   }
