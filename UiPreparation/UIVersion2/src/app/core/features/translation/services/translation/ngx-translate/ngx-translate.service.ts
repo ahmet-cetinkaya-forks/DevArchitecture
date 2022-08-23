@@ -23,6 +23,10 @@ export class NgxTranslateService
     return this.http.get(`${this.apiUrl}/${lang}`);
   }
 
+  get(key: string): Observable<string> {
+    return this.translateService.get(key);
+  }
+
   setDefaultLanguage(lang: string): void {
     this.translateService.setDefaultLang(lang);
   }
