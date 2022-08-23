@@ -17,8 +17,8 @@ const primeNgModules = [ToastModule, ButtonModule];
   imports: [CommonModule, BrowserAnimationsModule, ...primeNgModules],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: ToastService, useClass: ToastPrimengService},
     MessageService,
+    {provide: ToastService, useClass: ToastPrimengService},
   ],
   exports: [ToastComponent],
 })

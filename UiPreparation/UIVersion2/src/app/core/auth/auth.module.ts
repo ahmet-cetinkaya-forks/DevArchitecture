@@ -16,6 +16,8 @@ import {StoreModule} from '@ngrx/store';
 import {authReducers} from './store';
 import {StorageService} from '@core/storage/services/storage/storageService';
 import {environment} from 'src/environments/environment';
+import {SharedModule} from '@core/shared/shared.module';
+import {TranslationModule} from '@core/features/translation/translation.module';
 
 export const jwtOptionsFactory = (storageService: StorageService) => ({
   tokenGetter: () => storageService.get('token'),
@@ -40,6 +42,8 @@ const primeNgModules = [CheckboxModule, ButtonModule, InputTextModule];
     }),
     StoreModule.forRoot(authReducers),
     StorageModule,
+    SharedModule,
+    TranslationModule,
     ...primeNgModules,
   ],
   providers: [{provide: AuthService, useClass: JwtAuthService}],
