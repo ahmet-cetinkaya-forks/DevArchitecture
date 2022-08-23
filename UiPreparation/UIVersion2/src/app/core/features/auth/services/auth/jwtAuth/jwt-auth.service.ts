@@ -1,19 +1,21 @@
 import {Observable, Subject} from 'rxjs';
-import {deleteAuthUser, setAuthUser} from '@core/auth/store/auth/auth.actions';
-
 import {AuthService} from '../authService';
-import {AuthStore} from '@core/auth/store';
-import {AuthToken} from '@core/auth/models/authToken';
-import {AuthUser} from '@core/auth/models/authUser';
 import {HttpClient, HttpRequest} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {JwtTokenPayload} from '@core/auth/models/jwtTokenPayload';
 import {Response} from '@core/shared/models/response';
-import {StorageService} from '@core/storage/services/storage/storageService';
 import {Store} from '@ngrx/store';
-import {UserForLogin} from '@core/auth/models/userForLogin';
 import {Router} from '@angular/router';
+import {UserForLogin} from '@core/features/auth/models/userForLogin';
+import {StorageService} from '@core/features/storage/services/storage/storageService';
+import {AuthToken} from '@core/features/auth/models/authToken';
+import {AuthUser} from '@core/features/auth/models/authUser';
+import {JwtTokenPayload} from '@core/features/auth/models/jwtTokenPayload';
+import {AuthStore} from '@core/features/auth/store';
+import {
+  setAuthUser,
+  deleteAuthUser,
+} from '@core/features/auth/store/auth/auth.actions';
 
 @Injectable()
 export class JwtAuthService extends AuthService<AuthToken> {

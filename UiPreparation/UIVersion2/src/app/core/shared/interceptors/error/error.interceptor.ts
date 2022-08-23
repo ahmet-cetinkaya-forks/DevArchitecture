@@ -15,7 +15,7 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-import {AuthService} from '@core/auth/services/auth/authService';
+import {AuthService} from '@core/features/auth/services/auth/authService';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

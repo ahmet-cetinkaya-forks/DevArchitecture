@@ -1,5 +1,5 @@
-import {AuthUser} from '@core/auth/models/authUser';
 import {createReducer, on} from '@ngrx/store';
+import {AuthUser} from '../../models/authUser';
 
 import {deleteAuthUser, setAuthUser} from './auth.actions';
 

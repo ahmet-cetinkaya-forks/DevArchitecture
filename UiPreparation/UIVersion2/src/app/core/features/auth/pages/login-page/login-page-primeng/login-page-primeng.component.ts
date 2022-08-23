@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthToken} from '@core/auth/models/authToken';
-import {AuthService} from '@core/auth/services/auth/authService';
+import {AuthToken} from '@core/features/auth/models/authToken';
+import {AuthService} from '@core/features/auth/services/auth/authService';
 import {ToastService} from '@core/shared/services/toast/toastService';
 
 import {LoginPageComponent} from '../login-page.component';

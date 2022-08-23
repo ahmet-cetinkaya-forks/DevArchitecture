@@ -7,17 +7,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {InputTextModule} from 'primeng/inputtext';
 import {JwtAuthService} from './services/auth/jwtAuth/jwt-auth.service';
 import {JwtModule, JWT_OPTIONS} from '@auth0/angular-jwt';
-import {LoginPageComponent} from './pages/login-page/login-page.component';
-import {LoginPagePrimengComponent} from './pages/login-page/login-page-primeng/login-page-primeng.component';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {StorageModule} from '@core/storage/storage.module';
+import {StorageModule} from '@core/features/storage/storage.module';
 import {StoreModule} from '@ngrx/store';
 import {authReducers} from './store';
-import {StorageService} from '@core/storage/services/storage/storageService';
 import {environment} from 'src/environments/environment';
 import {SharedModule} from '@core/shared/shared.module';
 import {TranslationModule} from '@core/features/translation/translation.module';
+import {StorageService} from '../storage/services/storage/storageService';
+import {LoginPagePrimengComponent} from './pages/login-page/login-page-primeng/login-page-primeng.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
 
 export const jwtOptionsFactory = (storageService: StorageService) => ({
   tokenGetter: () => storageService.get('token'),

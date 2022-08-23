@@ -1,5 +1,5 @@
 import {Router} from '@angular/router';
-import {AuthService} from '@core/auth/services/auth/authService';
+import {AuthService} from '@core/features/auth/services/auth/authService';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component} from '@angular/core';
 import {ToastService} from '@core/shared/services/toast/toastService';
