@@ -8,13 +8,17 @@ import {
 import {HttpClient} from '@angular/common/http';
 import {NgxTranslateService} from './services/translation/ngx-translate/ngx-translate.service';
 import {TranslationService} from './services/translation/translationService';
+import {LanguageSelectMenuComponent} from './components/language-select-menu/language-select-menu.component';
+import {DropdownModule} from 'primeng/dropdown';
 
 // export function HttpLoaderFactory(http: HttpClient) { // if you want to use i18n, uncomment this block and install @ngx-translate/http-loader
 //   return new TranslateHttpLoader(http, '../../../../assets/i18n/', '.json');
 // }
 
+const primeNgModules = [DropdownModule];
+
 @NgModule({
-  declarations: [],
+  declarations: [LanguageSelectMenuComponent],
   imports: [
     CommonModule,
     TranslateModule.forChild({
@@ -25,8 +29,9 @@ import {TranslationService} from './services/translation/translationService';
         deps: [HttpClient],
       },
     }),
+    ...primeNgModules,
   ],
-  exports: [TranslateModule],
+  exports: [TranslateModule, LanguageSelectMenuComponent],
   providers: [
     {provide: TranslationService, useClass: NgxTranslateService},
     TranslateStore,

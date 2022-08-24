@@ -1,8 +1,10 @@
 <div class="d-background">
   <div
-    class="container vh-100 d-flex justify-content-center align-items-center"
+    class="container vh-100 d-flex flex-column justify-content-center align-items-center"
   >
-    <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+    <div
+      class="position-relative surface-card p-4 shadow-2 border-round w-full lg:w-6"
+    >
       <div class="d-flex justify-content-between text-center mb-5">
         <div class="text-900 text-3xl font-medium mb-3">
           {{ 'Login' | translate }}
@@ -46,9 +48,13 @@
           pRipple
           [label]="'Login' | translate"
           icon="pi pi-user"
-          class="w-full mt-5"
+          class="w-full mt-3"
         ></button>
       </form>
+
+      <div class="d-language-menu">
+        <d-language-select-menu></d-language-select-menu>
+      </div>
     </div>
   </div>
 </div>
