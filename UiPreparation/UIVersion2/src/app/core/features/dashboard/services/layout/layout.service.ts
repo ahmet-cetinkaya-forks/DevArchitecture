@@ -25,6 +25,7 @@ export class LayoutService {
 
   private configUpdate = new Subject<AppConfig>();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private overlayOpen = new Subject<any>();
 
   configUpdate$ = this.configUpdate.asObservable();

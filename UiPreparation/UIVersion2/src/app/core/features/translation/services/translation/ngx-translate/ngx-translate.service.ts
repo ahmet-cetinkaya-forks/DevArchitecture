@@ -19,8 +19,8 @@ export class NgxTranslateService
     super();
   }
 
-  getTranslation(lang: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${lang}`);
+  getTranslation(lang: string): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/${lang}`);
   }
 
   get(key: string): Observable<string> {

@@ -12,8 +12,10 @@ import {DashboardLayoutTopbarComponent} from './dashboard-layout-topbar/dashboar
 export class DashboardLayoutComponent implements OnInit {
   overlayMenuOpenSubscription: Subscription;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuOutsideClickListener: any;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   profileMenuOutsideClickListener: any;
 
   @ViewChild(DashboardLayoutSidebarComponent)

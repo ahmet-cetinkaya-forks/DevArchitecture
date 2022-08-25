@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LayoutService} from '@core/features/dashboard/services/layout/layout.service';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'd-dashboard-layout-menu',
@@ -7,7 +8,7 @@ import {LayoutService} from '@core/features/dashboard/services/layout/layout.ser
   styleUrls: ['./dashboard-layout-menu.component.scss'],
 })
 export class DashboardLayoutMenuComponent implements OnInit {
-  model: any[] = [];
+  model: MenuItem[] = [];
 
   constructor(public layoutService: LayoutService) {}
 

@@ -11,30 +11,33 @@ import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {LayoutService} from '@core/features/dashboard/services/layout/layout.service';
 import {MenuService} from '@core/features/dashboard/services/menu/menu.service';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   /* tslint:disable:component-selector */
   selector: '[d-dashboardLayoutMenuItem]',
   /* tslint:enable:component-selector */
   template: `
-    <ng-container>
+    <ng-container *ngIf="item">
       <div
         *ngIf="root && item.visible !== false"
         class="layout-menuitem-root-text"
       >
-        {{ item.label }}
+        {{ item.label || '' | translate }}
       </div>
       <a
         *ngIf="(!item.routerLink || item.items) && item.visible !== false"
         [attr.href]="item.url"
         (click)="itemClick($event)"
-        [ngClass]="item.class"
+        [ngClass]="item.styleClass || ''"
         [attr.target]="item.target"
         tabindex="0"
         pRipple
       >
-        <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-        <span class="layout-menuitem-text">{{ item.label }}</span>
+        <i [ngClass]="item.icon || ''" class="layout-menuitem-icon"></i>
+        <span class="layout-menuitem-text">{{
+          item.label || '' | translate
+        }}</span>
         <i
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
           *ngIf="item.items"
@@ -43,23 +46,27 @@ import {MenuService} from '@core/features/dashboard/services/menu/menu.service';
       <a
         *ngIf="item.routerLink && !item.items && item.visible !== false"
         (click)="itemClick($event)"
-        [ngClass]="item.class"
+        [ngClass]="item.styleClass || ''"
         [routerLink]="item.routerLink"
         routerLinkActive="active-route"
-        [routerLinkActiveOptions]="item.routerLinkOptions || {exact: true}"
+        [routerLinkActiveOptions]="
+          item.routerLinkActiveOptions || {exact: true}
+        "
         [fragment]="item.fragment"
         [queryParamsHandling]="item.queryParamsHandling"
-        [preserveFragment]="item.preserveFragment"
-        [skipLocationChange]="item.skipLocationChange"
-        [replaceUrl]="item.replaceUrl"
+        [preserveFragment]="item.preserveFragment || false"
+        [skipLocationChange]="item.skipLocationChange || false"
+        [replaceUrl]="item.replaceUrl || false"
         [state]="item.state"
         [queryParams]="item.queryParams"
         [attr.target]="item.target"
         tabindex="0"
         pRipple
       >
-        <i [ngClass]="item.icon" class="layout-menuitem-icon"></i>
-        <span class="layout-menuitem-text">{{ item.label }}</span>
+        <i [ngClass]="item.icon || ''" class="layout-menuitem-icon"></i>
+        <span class="layout-menuitem-text">{{
+          item.label || '' | translate
+        }}</span>
         <i
           class="pi pi-fw pi-angle-down layout-submenu-toggler"
           *ngIf="item.items"
@@ -76,7 +83,7 @@ import {MenuService} from '@core/features/dashboard/services/menu/menu.service';
             [item]="child"
             [index]="i"
             [parentKey]="key"
-            [class]="child.badgeClass"
+            [class]="child.badgeStyleClass || ''"
           ></li>
         </ng-template>
       </ul>
@@ -108,7 +115,7 @@ import {MenuService} from '@core/features/dashboard/services/menu/menu.service';
   ],
 })
 export class DashboardLayoutMenuItemComponent implements OnInit, OnDestroy {
-  @Input() item: any;
+  @Input() item!: MenuItem;
 
   @Input() index!: number;
 
@@ -156,7 +163,7 @@ export class DashboardLayoutMenuItemComponent implements OnInit, OnDestroy {
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(params => {
+      .subscribe(() => {
         if (this.item.routerLink) {
           this.updateActiveStateFromRoute();
         }

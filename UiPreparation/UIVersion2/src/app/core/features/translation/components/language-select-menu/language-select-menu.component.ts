@@ -28,6 +28,7 @@ export class LanguageSelectMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setLanguage(event: any) {
     const language: Language = event.value;
     this.translationService.setLanguage(language.code);
