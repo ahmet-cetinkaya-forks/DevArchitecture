@@ -1,0 +1,47 @@
+<div class="layout-topbar">
+  <button
+    #menubutton
+    class="p-link layout-menu-button layout-topbar-button"
+    (click)="layoutService.onMenuToggle()"
+  >
+    <i class="pi pi-bars"></i>
+  </button>
+
+  <a class="layout-topbar-logo" routerLink="dashboard">
+    <img src="assets/images/logo.png" alt="logo" class="img-fluid" />
+    <span class="d-none d-sm-block">Dashboard</span>
+  </a>
+
+  <button
+    #topbarmenubutton
+    class="p-link layout-topbar-menu-button layout-topbar-button"
+    (click)="layoutService.showProfileSidebar()"
+  >
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+
+  <div
+    #topbarmenu
+    class="layout-topbar-menu"
+    [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }"
+  >
+    <div class="p-link layout-topbar-button">
+      <i class="pi pi-user"></i>
+      <span class="layout-topbar-button-text-show">{{
+        (authService.authUser$ | async)!.name
+      }}</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <span class="d-none d-lg-block">
+        {{ (authService.authUser$ | async)!.name }}
+      </span>
+    </div>
+    <button (click)="logOut()" class="p-link layout-topbar-button">
+      <i class="pi pi-sign-out"></i>
+      <span>{{ 'Log out' | translate }}</span>
+    </button>
+  </div>
+</div>

@@ -78,9 +78,37 @@ export class JwtAuthService extends AuthService<AuthToken> {
     return subject.asObservable();
   }
 
+  initializeAuth(): void {
+    if (!this.isAuthenticated) return;
+    if (!this.decodedToken) return;
+
+    const claims: string[] | null = JSON.parse(
+      this.storageService.get('claims') as string
+    );
+
+    if (!claims) return;
+
+    const authUser: AuthUser = {
+      id: Number(
+        this.decodedToken[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ]
+      ),
+      name: this.decodedToken[
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+      ],
+      role: this.decodedToken[
+        'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+      ],
+      claims,
+    };
+    this.setAuthUser(authUser);
+  }
+
   saveAuth(authInformation: AuthToken): void {
     this.storageService.set('token', authInformation.token);
     this.storageService.set('refreshToken', authInformation.refreshToken);
+    this.storageService.set('claims', JSON.stringify(authInformation.claims));
 
     if (!this.isAuthenticated) return this.logOut();
     if (!this.decodedToken) return this.logOut();

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LanguageSelectMenuComponent } from './language-select-menu.component';
+import {LanguageSelectMenuComponent} from './language-select-menu.component';
 
 describe('LanguageSelectMenuComponent', () => {
   let component: LanguageSelectMenuComponent;
@@ -8,9 +8,8 @@ describe('LanguageSelectMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LanguageSelectMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [LanguageSelectMenuComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LanguageSelectMenuComponent);
     component = fixture.componentInstance;

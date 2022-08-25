@@ -12,6 +12,7 @@ export abstract class AuthService<TAuthInformation> {
   abstract login(
     userForLogin: UserForLogin
   ): Observable<Response<TAuthInformation>>;
+  abstract initializeAuth(): void;
   abstract saveAuth(authInformation: TAuthInformation): void;
   abstract refreshAuth(): Observable<Response<TAuthInformation>>;
   abstract addAuthToRequest(

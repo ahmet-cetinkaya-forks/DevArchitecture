@@ -5,6 +5,7 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from './shared/shared.module';
 import {StorageModule} from './features/storage/storage.module';
 import {TranslationModule} from './features/translation/translation.module';
+import {DashboardModule} from './features/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,7 @@ import {TranslationModule} from './features/translation/translation.module';
     AuthModule,
     StorageModule,
     TranslationModule,
+    DashboardModule,
   ],
   exports: [SharedModule, TranslationModule],
 })
