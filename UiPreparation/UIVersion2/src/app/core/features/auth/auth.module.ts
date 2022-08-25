@@ -18,6 +18,8 @@ import {TranslationModule} from '@core/features/translation/translation.module';
 import {StorageService} from '../storage/services/storage/storageService';
 import {LoginPagePrimengComponent} from './pages/login-page/login-page-primeng/login-page-primeng.component';
 import {LoginPageComponent} from './pages/login-page/login-page.component';
+import {LoginGuard} from './guards/login/login.guard';
+import {ClaimGuard} from './guards/claim/claim.guard';
 
 export const jwtOptionsFactory = (storageService: StorageService) => ({
   tokenGetter: () => storageService.get('token'),
@@ -46,6 +48,10 @@ const primeNgModules = [CheckboxModule, ButtonModule, InputTextModule];
     TranslationModule,
     ...primeNgModules,
   ],
-  providers: [{provide: AuthService, useClass: JwtAuthService}],
+  providers: [
+    {provide: AuthService, useClass: JwtAuthService},
+    LoginGuard,
+    ClaimGuard,
+  ],
 })
 export class AuthModule {}

@@ -108,7 +108,8 @@ export class JwtAuthService extends AuthService<AuthToken> {
   saveAuth(authInformation: AuthToken): void {
     this.storageService.set('token', authInformation.token);
     this.storageService.set('refreshToken', authInformation.refreshToken);
-    this.storageService.set('claims', JSON.stringify(authInformation.claims));
+    if (authInformation.claims)
+      this.storageService.set('claims', JSON.stringify(authInformation.claims));
 
     if (!this.isAuthenticated) return this.logOut();
     if (!this.decodedToken) return this.logOut();
@@ -158,7 +159,9 @@ export class JwtAuthService extends AuthService<AuthToken> {
   logOut(): void {
     this.storageService.remove('token');
     this.storageService.remove('refreshToken');
+    this.storageService.remove('claims');
     this.storageService.remove('lang');
+
     this.removeAuthUser();
   }
 
