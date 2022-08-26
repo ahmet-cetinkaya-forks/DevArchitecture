@@ -25,7 +25,7 @@ export class ClaimGuard implements CanActivate {
     const isUserAuthorized = this.authService.isAuthorized(requiredClaims);
     if (!isUserAuthorized) {
       this.translateService.get('AuthorizationsDenied').subscribe(message => {
-        this.toastService.showToast('error', '', message);
+        this.toastService.showToast('error', message, '');
       });
       return false;
     }

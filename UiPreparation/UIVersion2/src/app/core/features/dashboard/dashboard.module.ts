@@ -17,6 +17,10 @@ import {LayoutService} from './services/layout/layout.service';
 import {DashboardLayoutMenuItemComponent} from './layouts/dashboard-layout/dashboard-layout-menu/dashboard-layout.menu-item.component';
 import {TranslationModule} from '../translation/translation.module';
 import {AuthModule} from '../auth/auth.module';
+import {TableModule} from 'primeng/table';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 const primeNgModules = [
   InputTextModule,

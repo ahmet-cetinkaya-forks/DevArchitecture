@@ -10,6 +10,7 @@ export abstract class ToastService {
   ): void;
 
   abstract showConfirmDialog(
+    severity: 'success' | 'error' | 'warn' | 'info',
     title: string,
     message: string
   ): Observable<boolean>;
