@@ -1,3 +1,7 @@
+# 🤝 Contributing
+
+- [Angular UI V2](https://github.com/ahmet-cetinkaya-forks/DevArchitecture/tree/angular-ui-version-2) branch
+
 # DevArchitecture
 
 DevArchitecture Open Source Rapid Application Framework for .Net 5
